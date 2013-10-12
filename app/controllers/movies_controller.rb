@@ -8,10 +8,10 @@ class MoviesController < ApplicationController
 
   def index
     #This is where all indexing will need to happen!!!!
-    @movies = Movie.all
-    
-  end
+    #@movies = Movie.all #Original Code: this just displays all
+    @movies = Movie.order(params[:sort]) #this takes movies and uses the order function with sort parameters to reorder and diplay the list
 
+  end
   def new
     # default: render 'new' template
   end
