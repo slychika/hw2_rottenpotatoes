@@ -8,8 +8,19 @@ class MoviesController < ApplicationController
 
   def index
     #This is where all indexing will need to happen!!!!
+    #@movies = Movie.all #Original Code: this just displays all
+    #@movies = Movie.order(params[:sort]) #this takes movies and uses the order function with sort parameters to reorder and diplay the list
+
     @movies = Movie.all
-    
+    @all_ratings = ['G', 'PG', 'PG-13', 'R']
+    @redirect = 0
+
+    if(@checked != nil)
+      @movies = @movies.find_all{ |m| @checked.has_key?(m.rating) and @checked[m.rating]==true}
+    elsif(session[:ratings] == nil and params[:ratings] == nil)
+      @all_ratings.each { |rating| }
+        ratings[:rating]
+
   end
 
   def new
