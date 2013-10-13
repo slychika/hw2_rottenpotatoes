@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
 
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     shouldRedirect = false
-   
+    #discussed with many people, andrea helped me get here
     if params[:sort_by] == nil
       if session[:sort_by] != nil
         @sorted_field = session[:sort_by].to_s
@@ -47,10 +47,10 @@ class MoviesController < ApplicationController
       redirect_to movies_path(newParams)
     end
     
-    @checked_ratings = @checked_ratings_hash != nil ? @checked_ratings_hash.keys : []
-    @search_ratings = @checked_ratings.empty?() ? @all_ratings : @checked_ratings
-    @movies = Movie.find_all_by_rating(@search_ratings, :order => @sorted_field)
-    @highlight = @sorted_field
+    @checked_ratings = @checked_ratings_hash != nil ? @checked_ratings_hash.keys : [] #makes sure that the checked boxes match the stuff showing
+    @search_ratings = @checked_ratings.empty?() ? @all_ratings : @checked_ratings # sets them all to checked in the begining
+    @movies = Movie.find_all_by_rating(@search_ratings, :order => @sorted_field) #allows you to have sorted movies
+    @highlight = @sorted_field #acts with the haml, makes sure the right collumn is highlighted
   end
 
   def new

@@ -5,6 +5,7 @@ NEED TO EDIT for application complete:
 movies_controller.rb
 movies_helper.rb
 index.html.haml
+====================================================================
 
 
 Homework 2 - CS 169.1x SaaS
