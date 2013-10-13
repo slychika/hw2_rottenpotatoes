@@ -11,16 +11,46 @@ class MoviesController < ApplicationController
     #@movies = Movie.all #Original Code: this just displays all
     #@movies = Movie.order(params[:sort]) #this takes movies and uses the order function with sort parameters to reorder and diplay the list
 
-    @movies = Movie.all
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
-    @redirect = 0
-
-    if(@checked != nil)
-      @movies = @movies.find_all{ |m| @checked.has_key?(m.rating) and @checked[m.rating]==true}
-    elsif(session[:ratings] == nil and params[:ratings] == nil)
-      @all_ratings.each { |rating| }
-        ratings[:rating]
-
+    shouldRedirect = false
+   
+    if params[:sort_by] == nil
+      if session[:sort_by] != nil
+        @sorted_field = session[:sort_by].to_s
+        shouldRedirect = true
+      end
+    else
+      @sorted_field = params[:sort_by].to_s
+    end
+    
+    if params[:ratings] == nil
+      if session[:ratings] != nil
+        @checked_ratings_hash = session[:ratings]
+        shouldRedirect = true
+      end
+    else
+      @checked_ratings_hash = params[:ratings]
+    end
+    
+    if @checked_ratings_hash != nil
+      session.merge!({ :ratings => @checked_ratings_hash })
+    end
+    
+    if @sorted_field != nil
+      session.merge!({ :sort_by => @sorted_field })
+    end
+    
+    if shouldRedirect == true
+      newParams = Hash.new
+      newParams.merge!({ :ratings => @checked_ratings_hash })
+      newParams.merge!({ :sort_by => @sorted_field })
+      redirect_to movies_path(newParams)
+    end
+    
+    @checked_ratings = @checked_ratings_hash != nil ? @checked_ratings_hash.keys : []
+    @search_ratings = @checked_ratings.empty?() ? @all_ratings : @checked_ratings
+    @movies = Movie.find_all_by_rating(@search_ratings, :order => @sorted_field)
+    @highlight = @sorted_field
   end
 
   def new
