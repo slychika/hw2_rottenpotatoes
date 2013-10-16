@@ -2916,3 +2916,50 @@ Served asset /jquery_ujs.js - 304 Not Modified (0ms)
 
 Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-13 11:48:22 -0700
 Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2013-10-16 15:22:24 -0700
+Connecting to database specified by database.yml
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (13.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (70.7ms)
+Completed 200 OK in 1243ms (Views: 1196.4ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-16 15:22:29 -0700
+Served asset /application.css - 304 Not Modified (25ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-16 15:22:29 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (22ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-16 15:22:29 -0700
+Served asset /jquery.js - 304 Not Modified (37ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-16 15:22:29 -0700
+Served asset /application.js - 304 Not Modified (61ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2013-10-16 15:23:42 -0700
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (1.5ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'R')
+  Rendered movies/index.html.haml within layouts/application (10.3ms)
+Completed 200 OK in 98ms (Views: 82.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-16 15:23:48 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-16 15:23:48 -0700
+Served asset /application.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-16 15:23:48 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-16 15:23:48 -0700
+Served asset /jquery.js - 304 Not Modified (2ms)

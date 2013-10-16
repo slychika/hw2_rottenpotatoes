@@ -12,7 +12,6 @@
 %table#movies
   %thead 
     %tr
-    -#this was done like this so that we can have it sort for part 2
       %th{ :class => (@highlight == "title" ? "hilite" : nil)}
         = link_to "Movie Title", movies_path(createParamsArray("title")), :id => "title_header"
       %th Rating

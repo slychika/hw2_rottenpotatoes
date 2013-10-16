@@ -10,7 +10,7 @@
   = submit_tag 'Refresh'
 
 %table#movies
-  %thead
+  %thead 
     %tr
       %th{ :class => (@highlight == "title" ? "hilite" : nil)}
         = link_to "Movie Title", movies_path(createParamsArray("title")), :id => "title_header"
